@@ -1,11 +1,10 @@
 import { FaTimes } from 'react-icons/fa'
 import moment from 'moment'
 
-const Todo = ({ todo, onDelete, onToggle }) => {
+const Todo = ({ todo, onDelete}) => {
   return (
     <div
       className='todo'
-      onDoubleClick={() => onToggle(todo.id)}
     >
       <h3>
         {todo.todotext}{' '}
