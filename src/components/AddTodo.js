@@ -1,23 +1,28 @@
 import { useState } from 'react'
 
 const AddTodo = ({ onAdd }) => {
-  const [text, setText] = useState('')
+  const [todotext, setTodoText] = useState('')
   const [datetime, setDatetime] = useState('')
-  const [reminder, setReminder] = useState(false)
+  const [location, setLocation] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (!text) {
+    if (!todotext) {
       alert('Please add a todo')
       return
     }
 
-    onAdd({ text, datetime, reminder })
+    if(!datetime) {
+      alert('Please select date and time')
+      return
+    }
 
-    setText('')
+    onAdd({ todotext, datetime, location})
+
+    setTodoText('')
     setDatetime('')
-    setReminder(false)
+    setLocation('')
   }
 
   return (
@@ -27,8 +32,17 @@ const AddTodo = ({ onAdd }) => {
         <input
           type='text'
           placeholder='Add Todo'
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={todotext}
+          onChange={(e) => setTodoText(e.target.value)}
+        />
+      </div>
+      <div className='form-control'>
+        <label>Location</label>
+        <input
+          type='text'
+          placeholder='Add Location'
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
         />
       </div>
       <div className='form-control'>
@@ -40,16 +54,6 @@ const AddTodo = ({ onAdd }) => {
           onChange={(e) => setDatetime(e.target.value)}
         />
       </div>
-      <div className='form-control form-control-check'>
-        <label>Set Reminder</label>
-        <input
-          type='checkbox'
-          checked={reminder}
-          value={reminder}
-          onChange={(e) => setReminder(e.currentTarget.checked)}
-        />
-      </div>
-
       <input type='submit' value='Save Todo' className='btn btn-block' />
     </form>
   )

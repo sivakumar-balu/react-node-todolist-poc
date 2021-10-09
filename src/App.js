@@ -26,14 +26,6 @@ const App = () => {
     return data
   }
 
-  // Fetch Todo
-  const fetchTodo = async (id) => {
-    const res = await fetch(`http://localhost:5000/todos/${id}`)
-    const data = await res.json()
-
-    return data
-  }
-
   // Add Todo
   const addTodo = async (todo) => {
     const res = await fetch('http://localhost:5000/todos', {
@@ -60,28 +52,6 @@ const App = () => {
       : alert('Error Deleting This Todo')
   }
 
-  // Toggle Reminder
-  const toggleReminder = async (id) => {
-    const todoToToggle = await fetchTodo(id)
-    const updTodo = { ...todoToToggle, reminder: !todoToToggle.reminder }
-
-    const res = await fetch(`http://localhost:5000/todos/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(updTodo),
-    })
-
-    const data = await res.json()
-
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, reminder: data.reminder } : todo
-      )
-    )
-  }
-
   return (
     <Router>
       <div className='container'>
@@ -99,7 +69,6 @@ const App = () => {
                 <Todos
                   todos={todos}
                   onDelete={deleteTodo}
-                  onToggle={toggleReminder}
                 />
               ) : (
                 'No Todos To Show'
