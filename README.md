@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### 'npm rebuild`
+
+Run this if there are issue with node modules or package-json.lock
+
+### `npm install`
+
+This will install all node modules
+
 ### `npm start`
 
 Runs the app in the development mode.\
