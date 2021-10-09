@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "text": "Give Car for service",
+      "datetime": "2021-10-30T17:00",
+      "reminder": false,
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
